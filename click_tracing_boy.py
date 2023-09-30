@@ -38,12 +38,16 @@ while moving:
         x = (1-t)*x1 + t*x2
         y = (1-t)*y1 + t*y2
         back.draw_now(back_hight // 2, back_width // 2)
-        hand.draw_now(x2, y2)
+        
+        # 소년이 도착하지 않았다면 손을 계속 그리기
+        if(x1 != x2):
+            hand.draw_now(x2, y2)
         
         # 소년 애니메이션
         character.clip_draw(frame * 100, 0, 100, 100, x, y) 
         update_canvas()
         frame = (frame + 1) % 8
         delay(0.05)
-
+    
+    # 소년 도착
     x1, y1 = x2, y2
